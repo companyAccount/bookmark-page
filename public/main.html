@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>main</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/st.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+
+    <body ng-app="aApplication">
+        <!-- 검색 영역 -->
+        <section class="container" style="padding:0;" ng-controller="search-controller">
+            <input class="search-input" type="text" placeholder="검색어" ng-change="searchKeyword()" ng-model="searchInput" autofocus>
+            <article class="search-msg"><b>서버와의 통신 중 오류가 발생했습니다.</b></article>
+        </section>
+        <!-- 출력 영역 -->
+        <section class="container" ng-controller="main-controller">
+            <section class="no-result" ng-show="ajaxResult.length === 0">
+                - 찾으시려는 페이지가 있다면 검색해보세요!<br/>
+                - 새로운 페이지를 추가해보세요!
+            </section>
+            <section class="content-wrap" ng-repeat="item in ajaxResult">
+                <section class="thumbnail"><a href={{item.url}} target="_blank"><img src={{item.thumbnail.pc}}></a></section>
+                <div class="title"><a href={{item.url}} target="_blank" title={{item.title.kor}}>{{item.title.eng | uppercase}}</a></div>
+                <div class="url"><a href={{item.url}} target="_blank" title={{item.url}}>{{item.url}}</a></div>
+            </section>
+        </section>
+        <section class="write-container" ng-controller="write-controller">
+            <section class="write-form-container" ng-hide="writeFormToggle">
+                <section class="write-form">
+                    <input type="text" placeholder="URL을 입력해 주세요." ng-model="input.url">
+                    <label>사이트명</label>
+                    <input type="text" placeholder="한국어 이름" style="border-bottom:1px dotted #d5d5d5" ng-model="input.title.kor">
+                    <input type="text" placeholder="영어 이름" ng-model="input.title.eng">
+                    <label>사이트 썸네일</label>
+                    <input type="text" placeholder="이미지 주소." style="border-bottom:1px dotted #d5d5d5" ng-model="input.thumbnail.pc">
+                    <div class="bottom-block">
+                        <div class="thumbnail-preview">
+                            <img src={{input.thumbnail.pc}}>
+                        </div>
+                        <div class="btn-wrap">
+                            <div class="btn btn-submit" ng-click="submit()">전송</div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <div class="btn-write" ng-click="writeFormToggle=!writeFormToggle"></div>
+        </section>
+        <script src="./js/logic.js"></script>
+        <script src="./js/external-module.js"></script>
+    </body>
+
+</html>
