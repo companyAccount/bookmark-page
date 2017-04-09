@@ -18,10 +18,6 @@ var app = angular.module("aApplication", [])
             title: {
                 kor: "",
                 eng: ""
-            },
-            thumbnail: {
-                pc: "",
-                mobile: ""
             }
         };
         $scope.writeFormToggle = true;
@@ -44,11 +40,7 @@ var app = angular.module("aApplication", [])
                 alert("사이트명은 2글자 이상으로 적어주세요.");
                 return -1;
             }
-            if (!urlCheck(input.thumbnail.pc)) {
-                alert("입력하신 이미지 주소가 URL형식에 맞지 않습니다.");
-                return -1;
-            }
-
+            
             $scope.loading = true;
             ajaxLogic.insertDocument(input, function (res) {
                 switch (res.result) {
@@ -59,10 +51,6 @@ var app = angular.module("aApplication", [])
                             title: {
                                 kor: "",
                                 eng: ""
-                            },
-                            thumbnail: {
-                                pc: "",
-                                mobile: ""
                             }
                         };
                         $scope.writeFormToggle = true;

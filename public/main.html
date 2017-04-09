@@ -20,9 +20,9 @@
                 - 새로운 페이지를 추가해보세요!
             </section>
             <section class="content-wrap" ng-repeat="item in ajaxResult">
-                <section class="thumbnail"><a href={{item.url}} target="_blank"><img src={{item.thumbnail.pc}}></a></section>
-                <div class="title"><a href={{item.url}} target="_blank" title={{item.title.kor}}>{{item.title.eng | uppercase}}</a></div>
-                <div class="url"><a href={{item.url}} target="_blank" title={{item.url}}>{{item.url}}</a></div>
+                <section class="thumbnail"><a href=http://{{item.url}} target="_blank"><img src={{item.thumbnail.pc}}></a></section>
+                <div class="title"><a href=http://{{item.url}} target="_blank" title={{item.title.kor}}>{{item.title.eng | uppercase}}</a></div>
+                <div class="url"><a href=http://{{item.url}} target="_blank" title={{item.url}}>{{item.url}}</a></div>
             </section>
         </section>
         <section class="write-container" ng-controller="write-controller">
@@ -32,11 +32,8 @@
                     <label>사이트명</label>
                     <input type="text" placeholder="한국어 이름" style="border-bottom:1px dotted #d5d5d5" ng-model="input.title.kor">
                     <input type="text" placeholder="영어 이름" ng-model="input.title.eng">
-                    <label>사이트 썸네일</label>
-                    <input type="text" placeholder="이미지 주소." style="border-bottom:1px dotted #d5d5d5" ng-model="input.thumbnail.pc">
                     <div class="bottom-block">
                         <div class="thumbnail-preview">
-                            <img src={{input.thumbnail.pc}}>
                         </div>
                         <div class="btn-wrap">
                             <div class="btn btn-submit" ng-click="submit()">전송</div>
